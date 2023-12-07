@@ -58,7 +58,7 @@ class MyHomePage extends StatelessWidget {
                   },
                   child: const Text('Level 1'),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
                     // Navigator.pushNamed(context, '/page2');
@@ -69,7 +69,7 @@ class MyHomePage extends StatelessWidget {
                   },
                   child: const Text('Level 2'),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
                     // Navigator.pushNamed(context, '/page3');
@@ -80,7 +80,7 @@ class MyHomePage extends StatelessWidget {
                   },
                   child: const Text('Level 3'),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
                     // Navigator.pushNamed(context, '/page4');
