@@ -5,14 +5,29 @@ import 'package:chemistry_game/page3.dart';
 import 'package:chemistry_game/page4.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
+}
+
+about() {
+  // dont mess with this func
+  return const Center(
+    child: SizedBox(
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[Text("Made By Varun Banka")],
+        ),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyHomePage(),
+      home: const MyHomePage(),
       routes: {
         '/page1': (context) => Page1(),
         '/page2': (context) => Page2(),
@@ -24,23 +39,10 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  const MyHomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Riddle Riot: The Deadly Brain Tease'),
-        actions: [
-          IconButton(
-            onPressed: () {
-              showModalBottomSheet(
-                context: context,
-                builder: (ctx) => const Text("Made by Varun Banka"),
-              );
-            },
-            icon: const Icon(Icons.developer_board),
-          ),
-        ],
-      ),
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
@@ -51,12 +53,19 @@ class MyHomePage extends StatelessWidget {
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment
+                  .center, // Optional: Align the buttons at the center horizontally
+              mainAxisSize: MainAxisSize
+                  .min, // Ensure the column takes the minimum amount of vertical space
               children: <Widget>[
+                const SizedBox(
+                    height:
+                        500), // Adjust the amount of space before the buttons
                 ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/page1');
                   },
-                  child: const Text('Level 1'),
+                  child: const Text('Start'),
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
@@ -64,33 +73,12 @@ class MyHomePage extends StatelessWidget {
                     // Navigator.pushNamed(context, '/page2');
                     showModalBottomSheet(
                       context: context,
-                      builder: (ctx) => const Text("Please start with Level 1"),
+                      builder: (ctx) => about(),
                     );
                   },
-                  child: const Text('Level 2'),
+                  child: const Text('About'),
                 ),
                 const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    // Navigator.pushNamed(context, '/page3');
-                    showModalBottomSheet(
-                      context: context,
-                      builder: (ctx) => const Text("Please start with Level 1"),
-                    );
-                  },
-                  child: const Text('Level 3'),
-                ),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    // Navigator.pushNamed(context, '/page4');
-                    showModalBottomSheet(
-                      context: context,
-                      builder: (ctx) => const Text("Please start with Level 1"),
-                    );
-                  },
-                  child: const Text('Level 4'),
-                ),
               ],
             ),
           ),

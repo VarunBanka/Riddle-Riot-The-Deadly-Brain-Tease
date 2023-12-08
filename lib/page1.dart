@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:chemistry_game/quiz_data.dart';
 
 class Page1 extends StatefulWidget {
+  const Page1({Key? key}) : super(key: key);
   @override
-  _Page1State createState() => _Page1State();
+  Page1State createState() => Page1State();
 }
 
-class _Page1State extends State<Page1> with TickerProviderStateMixin {
+class Page1State extends State<Page1> with TickerProviderStateMixin {
   late AnimationController _animationController;
   double _blockPosition = 0;
 
@@ -66,6 +67,7 @@ class _Page1State extends State<Page1> with TickerProviderStateMixin {
                         title: Text(currentQuestion['options'][index]),
                         value: index,
                         groupValue: _selectedAnswerIndex,
+                        // code here
                         onChanged: (value) {
                           setState(() {
                             _selectedAnswerIndex =
@@ -81,6 +83,9 @@ class _Page1State extends State<Page1> with TickerProviderStateMixin {
                               } else {
                                 Navigator.pushNamed(context, '/page2');
                               }
+                            } else {
+                              // Show an error message for wrong answer
+                              Navigator.pushNamed(context, '/page1');
                             }
                           });
                         },
@@ -100,8 +105,19 @@ class _Page1State extends State<Page1> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Level 1'),
-      ),
+          title: const Text('Level 1'),
+          flexibleSpace: const Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(bottom: 8.0),
+                child: Text(
+                  "Escape the room",
+                  style: TextStyle(color: Colors.white),
+                ),
+              )
+            ],
+          )),
       body: Stack(
         children: <Widget>[
           Container(
@@ -113,16 +129,15 @@ class _Page1State extends State<Page1> with TickerProviderStateMixin {
             ),
           ),
           AnimatedPositioned(
-            duration: const Duration(seconds: 2),
-            curve: Curves.ease,
-            left: (MediaQuery.of(context).size.width - 100) / 2,
-            bottom: _blockPosition,
-            child: Container(
-              color: Colors.yellow,
-              width: 100,
-              height: 100,
-            ),
-          ),
+              duration: const Duration(seconds: 2),
+              curve: Curves.ease,
+              left: (MediaQuery.of(context).size.width - 100) / 2,
+              bottom: _blockPosition,
+              child: Image.asset(
+                'player.png',
+                width: 100,
+                height: 100,
+              )),
         ],
       ),
     );
