@@ -12,7 +12,7 @@ class _Page3State extends State<Page3> {
   int _currentQuestionIndex = 0;
   late int? _selectedAnswerIndex = -1;
 
-  showQuestions() {
+  void _showModalSheet() {
     Map<String, dynamic> currentQuestion =
         QuizData.quizQuestions[_currentQuestionIndex];
     showModalBottomSheet(
@@ -51,7 +51,7 @@ class _Page3State extends State<Page3> {
                                   null; // Reset the selected answer index
                               if (_currentQuestionIndex <
                                   QuizData.quizQuestions.length) {
-                                showQuestions(); // Show the next question if available
+                                _showModalSheet(); // Show the next question if available
                               } else {
                                 Navigator.pushNamed(context, '/page2');
                               }
@@ -106,7 +106,7 @@ class _Page3State extends State<Page3> {
       gameWon = false;
     });
 
-    Timer.periodic(Duration(milliseconds: 20), (timer) {
+    Timer.periodic(const Duration(milliseconds: 20), (timer) {
       if (balloonPositionY <= 0) {
         // Balloon reached the top
         timer.cancel();
@@ -116,10 +116,7 @@ class _Page3State extends State<Page3> {
           setState(
             () {
               gameWon = true;
-              showModalBottomSheet(
-                context: context,
-                builder: (ctx) => showQuestions(),
-              );
+              _showModalSheet();
             },
           );
         } else {
@@ -196,7 +193,7 @@ class _Page3State extends State<Page3> {
                           startGame();
                         }
                       },
-                      child: Container(
+                      child: SizedBox(
                         width: 50,
                         height: 50,
                         child: Image.asset(
@@ -223,7 +220,7 @@ class _Page3State extends State<Page3> {
                           height: 100,
                           color: Colors.blue,
                         ),
-                        Text('Block A'),
+                        const Text('Block A'),
                       ],
                     ),
                   ),
@@ -238,20 +235,20 @@ class _Page3State extends State<Page3> {
                           height: 100,
                           color: Colors.orange,
                         ),
-                        Text('Block C'),
+                        const Text('Block C'),
                       ],
                     ),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             if (gameResultShown)
               Text(
                 gameWon ? 'You Win!' : 'You Lose!',
-                style: TextStyle(fontSize: 20),
+                style: const TextStyle(fontSize: 20),
               ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Column(
               children: [
                 ElevatedButton(
@@ -260,25 +257,25 @@ class _Page3State extends State<Page3> {
                       startGame();
                     }
                   },
-                  child: Text('Start'),
+                  child: const Text('Start'),
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Column(
               children: [
                 ElevatedButton(
                   onPressed: moveBalloonLeft,
-                  child: Text('Left'),
+                  child: const Text('Left'),
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Column(
               children: [
                 ElevatedButton(
                   onPressed: moveBalloonRight,
-                  child: Text('Right'),
+                  child: const Text('Right'),
                 ),
               ],
             ),
@@ -286,7 +283,7 @@ class _Page3State extends State<Page3> {
             if (gameStarted && gameResultShown && gameWon == false)
               ElevatedButton(
                 onPressed: restartGame,
-                child: Text('Restart'),
+                child: const Text('Restart'),
               ),
           ],
         ),
