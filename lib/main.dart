@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:chemistry_game/page1.dart';
 import 'package:chemistry_game/page2.dart';
 import 'package:chemistry_game/page3.dart';
-import 'package:chemistry_game/page4.dart';
+import 'package:chemistry_game/page4/mainForPage4.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         '/page1': (context) => const Page1(),
         '/page2': (context) => Page2(),
         '/page3': (context) => const Page3(),
-        '/page4': (context) => Page4(),
+        '/page4': (context) => const MyGame(),
       },
     );
   }
