@@ -1,3 +1,4 @@
+import 'package:chemistry_game/page3.dart';
 import 'package:flutter/material.dart';
 
 class Page2 extends StatelessWidget {
@@ -8,7 +9,11 @@ class Page2 extends StatelessWidget {
         title: Text('Page 2'),
       ),
       body: Center(
-        child: Text('This is Page 2'),
+        child: ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/page3');
+            },
+            child: const Text("Move to page 3")),
       ),
     );
   }

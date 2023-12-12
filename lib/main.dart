@@ -4,8 +4,41 @@ import 'package:chemistry_game/page2.dart';
 import 'package:chemistry_game/page3.dart';
 import 'package:chemistry_game/page4/mainForPage4.dart';
 
+var kDarkColourSchm = ColorScheme.fromSeed(
+  brightness: Brightness.dark,
+  seedColor: const Color.fromARGB(255, 5, 99, 125),
+);
+
+var kColorSchm = ColorScheme.fromSeed(
+  seedColor: const Color.fromARGB(255, 96, 59, 181),
+);
+
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MaterialApp(
+      darkTheme: ThemeData.dark().copyWith(
+        useMaterial3: true,
+        colorScheme: kDarkColourSchm,
+      ),
+      theme: ThemeData().copyWith(
+        useMaterial3: true,
+        colorScheme: kColorSchm,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: kColorSchm.primaryContainer,
+          ),
+        ),
+        textTheme: ThemeData().textTheme.copyWith(
+                titleLarge: TextStyle(
+              fontWeight: FontWeight.normal,
+              color: kColorSchm.secondaryContainer,
+              fontSize: 14,
+            )),
+      ),
+      themeMode: ThemeMode.system,
+      home: const MyApp(),
+    ),
+  );
 }
 
 about() {
@@ -27,6 +60,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData.dark(),
       home: const MyHomePage(),
       routes: {
         '/page1': (context) => const Page1(),
