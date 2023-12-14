@@ -64,8 +64,8 @@ class MyApp extends StatelessWidget {
       home: const MyHomePage(),
       routes: {
         '/page1': (context) => const Page1(),
-        '/page2': (context) => Page2(),
-        '/page3': (context) => const Page3(),
+        '/page2': (context) => const Page2(),
+        '/Page2': (context) => const Page2(),
         '/page4': (context) => const MyGame(),
       },
     );
@@ -97,7 +97,7 @@ class MyHomePage extends StatelessWidget {
                         500), // Adjust the amount of space before the buttons
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/page1');
+                    Navigator.pushNamed(context, '/page2');
                   },
                   child: const Text('Start'),
                 ),
