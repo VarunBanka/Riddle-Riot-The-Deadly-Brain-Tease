@@ -81,7 +81,7 @@ class Page1State extends State<Page1> with TickerProviderStateMixin {
                                   QuizData.quizQuestions.length) {
                                 _showModalSheet(); // Show the next question if available
                               } else {
-                                Navigator.pushNamed(context, '/page2');
+                                Navigator.pushNamed(context, '/page3');
                               }
                             } else {
                               // Show an error message for wrong answer
@@ -123,21 +123,22 @@ class Page1State extends State<Page1> with TickerProviderStateMixin {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('levelOne.png'),
+                image: AssetImage('images/levelOne.png'),
                 fit: BoxFit.cover,
               ),
             ),
           ),
           AnimatedPositioned(
-              duration: const Duration(seconds: 2),
-              curve: Curves.ease,
-              left: (MediaQuery.of(context).size.width - 100) / 2,
-              bottom: _blockPosition,
-              child: Image.asset(
-                'player.png',
-                width: 100,
-                height: 100,
-              )),
+            duration: const Duration(seconds: 2),
+            curve: Curves.ease,
+            left: (MediaQuery.of(context).size.width - 100) / 2,
+            bottom: _blockPosition,
+            child: Container(
+              color: Colors.yellow,
+              width: 100,
+              height: 100,
+            ),
+          ),
         ],
       ),
     );

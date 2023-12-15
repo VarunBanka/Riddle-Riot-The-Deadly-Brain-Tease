@@ -192,7 +192,7 @@ class _Page3State extends State<Page3> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Level 3'),
+        title: const Text('Level 2'),
       ),
       body: Center(
         child: Column(
@@ -216,8 +216,9 @@ class _Page3State extends State<Page3> {
                       child: SizedBox(
                         width: 50,
                         height: 50,
-                        child: Image.asset(
-                          'player.png',
+                        child: Container(
+                          // image: AssetImage("images/player.png"),
+                          color: Colors.yellow,
                           width: 100,
                           height: 100,
                         ),
