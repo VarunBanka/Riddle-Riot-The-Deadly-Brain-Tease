@@ -10,8 +10,12 @@ import 'audio/audio_controller.dart';
 import 'player_progress/player_progress.dart';
 import 'settings/settings.dart';
 import 'style/palette.dart';
+import 'package:flutter/services.dart'; // for changeing the preferred orientations to landscape
 
 void main() async {
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeLeft,
+  ]);
   WidgetsFlutterBinding.ensureInitialized();
   await Flame.device.setLandscape();
   await Flame.device.fullScreen();

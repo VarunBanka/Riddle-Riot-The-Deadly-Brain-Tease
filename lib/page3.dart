@@ -3,8 +3,8 @@ import 'dart:async';
 
 int _currentQuestionIndex = 0;
 int? _selectedAnswerIndex = -1;
-String clue1 = "I am a hydrocarbon. Who am I ?";
-String clue2 = "I am burning with blue flame . Who am I ?";
+String clue1 = "I am burning with blue flame . Who am I ?";
+String clue2 = "I am a hydrocarbon. Who am I ?";
 String clue3 = "I have tetrahedral structure. Who am I ?";
 String clue4 = "I am better known as MARSH GAS. Who am I ?";
 int hint = 0;
